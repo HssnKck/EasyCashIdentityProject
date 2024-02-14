@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace EasyCashIdentityProject.DataAccessLayer.Concrete
 {
     public class Context : IdentityDbContext<AppUser, AppRole, int>
-    {
+	{
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("server=DESKTOP-J9H0RUJ\\SQLEXPRESS;initial catalog=EasyCashDb;integrated Security=true");
