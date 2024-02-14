@@ -38,6 +38,9 @@ namespace EasyCashIdentityProject.PresentationLayer.Controllers
 					Name = appUserRegisterDto.Name,
 					Surname = appUserRegisterDto.Surname,
 					Email = appUserRegisterDto.Email,
+					City = "aaaa",
+					District="bbbb",
+					ImageUrl="cccc",
 					ConfirmCode = code
 				};
 				var result = await _userManager.CreateAsync(appUser, appUserRegisterDto.Password);
@@ -49,18 +52,18 @@ namespace EasyCashIdentityProject.PresentationLayer.Controllers
 
 					mimeMessage.From.Add(mailboxAddressFrom);
 					mimeMessage.To.Add(mailboxAddressTo);
-					
+
 					BodyBuilder bodyBuilder = new BodyBuilder();
 					bodyBuilder.TextBody = "Kayıt İşleminizi Tamamlamak için Doğrulama Kodunu Giriniz : " + code;
 					mimeMessage.Body = bodyBuilder.ToMessageBody();
 					mimeMessage.Subject = "Easy Cash Onay Kodu";
-					
+
 					SmtpClient client = new SmtpClient();
-					client.Connect("smtp.gmail.com",587,false);
-					client.Authenticate("muhammedhasankucuk39@gmail.com","bhveltxtnpkwecpe");
+					client.Connect("smtp.gmail.com", 465, false);
+					client.Authenticate("muhammedhasankucuk39@gmail.com", "bhveltxtnpkwecpe");
 					client.Send(mimeMessage);
 					client.Disconnect(true);
-					
+
 					return RedirectToAction("index", "ConfirmMail");
 				}
 				else

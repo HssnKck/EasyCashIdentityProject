@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EasyCashIdentityProject.DataAccessLayer.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20240214142429_mig1")]
-    partial class mig1
+    [Migration("20240214150517_new_update")]
+    partial class new_update
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
