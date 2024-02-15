@@ -44,6 +44,21 @@ namespace EasyCashIdentityProject.PresentationLayer.Models
 				Description = "Lütfen en az 1 sembol giriniz"
 			};
 		}
-
+		public override IdentityError DuplicateUserName(string userName)
+		{
+			return new IdentityError
+			{
+				Code = "DuplicateUserName",
+				Description = $"Kullandığınız '{userName}' bu kullanıcı adı başka biri kullanmaktadır.\n Lütfen başka bir kullanıcı adı seçiniz."
+			};
+		}
+		public override IdentityError InvalidUserName(string userName)
+		{
+			return new IdentityError
+			{
+				Code = "InvalidUserName",
+				Description = $"Kullandığınız '{userName}' bu kullanıcı adı geçersiz karakter içermektedir.\n Lütfen özel karakter kullanmayınız."
+			};
+        }
 	}
 }
