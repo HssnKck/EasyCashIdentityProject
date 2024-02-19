@@ -1,5 +1,6 @@
 ﻿using EasyCashIdentityProject.DtoLayer.Dtos.AppUserDtos;
 using EasyCashIdentityProject.EntityLayer.Concrete;
+using EasyCashIdentityProject.PresentationLayer.Models;
 using MailKit.Net.Smtp;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -25,7 +26,9 @@ namespace EasyCashIdentityProject.PresentationLayer.Controllers
 		[HttpPost]
 		public async Task<IActionResult> Index(AppUserRegisterDto appUserRegisterDto)
 		{
-			if (ModelState.IsValid)
+            var user = await _userManager.FindByEmailAsync(appUserRegisterDto.Email);
+			ViewBag.User = user;
+			if (ModelState.IsValid && user == null)
 			{
 				Random random = new Random();
 				int code = random.Next(100000, 1000000);
