@@ -16,5 +16,6 @@ namespace EasyCashIdentityProject.DtoLayer.Dtos.AppUserDtos
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
         public string PassWord { get; set; }
+        public string ConfirmPassWord { get; set; }
     }
 }
